@@ -1,0 +1,30 @@
+create database thuchanh;
+use thuchanh;
+create table product
+(
+    Id          int primary key auto_increment,
+    Name        varchar(255),
+    Price       float,
+    Quantity    int,
+    color       varchar(50),
+    Description varchar(255),
+    CategoryId  int (50)
+);
+
+create table category
+(
+    Id   int primary key auto_increment,
+    Name varchar(50)
+);
+alter table product
+    add foreign key (CategoryId) references category (Id);
+
+insert into category
+values (1, 'Hoa sinh nhật'),
+       (2, 'Hoa sự kiện'),
+       (3, 'Hoa tân gia');
+
+insert into product(name, price, quantity, color, description, categoryid) values ('hoa dao',2000,20,'trang','dep',1),
+                                                                                  ('hoa lan',3000,30,'vang','xau',2),
+                                                                                  ('hoa nah dao',4000,30,'vang','xau',3);
+INSERT INTO product (Name, Price, Quantity, color, Description, CategoryId) VALUES (?,?,?,?,?,?);
